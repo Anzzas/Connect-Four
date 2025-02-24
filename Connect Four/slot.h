@@ -16,9 +16,11 @@ public:
 
 	Slot() = default;
 
+	bool isEmpty() const;
 	const State& getState() const;
 	const Token* getToken() const;
 	void addToken(Token token);
+	friend std::ostream& operator<< (std::ostream& out, const State& state);
 	friend std::ostream& operator<< (std::ostream& out, const Slot& slot);
 	bool operator== (const Slot& slot) const;
 	bool operator!= (const Slot& slot) const;

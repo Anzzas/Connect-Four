@@ -1,12 +1,11 @@
-#include "token.h"
+#include "slot.h"
 
 int main()
 {
-	Token token{ Token::createRed() };
-	Token token2{ Token::createRed() };
+	Slot slot{};
+	slot.addToken(Token::createRed());
 
-	if (token != token2)
-		std::cout << "not equal\n";
-	else
-		std::cout << "equal\n";
+	Slot slot2{};
+
+	std::cout << slot.getToken()->getType();
 }

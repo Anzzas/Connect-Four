@@ -7,7 +7,7 @@ const Token::Type& Token::getType() const
 
 std::ostream& operator<< (std::ostream& out, const Token::Type& type)
 {
-	std::array<std::string, Token::max_types> names{ "red", "yellow" };
+	std::array<char, Token::max_types> names{ 'R', 'Y'};
 
 	out << names[type];
 	return out;
@@ -27,4 +27,14 @@ bool Token::operator== (const Token& token) const
 bool Token::operator!= (const Token& token) const
 {
 	return !(*this == token);
+}
+
+Token Token::createRed()
+{
+	return Token{ red };
+}
+
+Token Token::createYellow()
+{
+	return Token{ yellow };
 }

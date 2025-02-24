@@ -18,16 +18,8 @@ public:
 
 	Token() = delete;
 
-	static Token createRed()
-	{
-		return Token{ red };
-	}
-
-	static Token createYellow()
-	{
-		return Token{ yellow };
-	}
-
+	static Token createRed();
+	static Token createYellow();
 	const Type& getType() const;
 	friend std::ostream& operator<< (std::ostream& out, const Type& type);
 	friend std::ostream& operator<< (std::ostream& out, const Token& token);
