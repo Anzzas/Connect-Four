@@ -74,7 +74,66 @@ void Board::dropCoin(Token token, size_t column)
 
 bool Board::isGameWon() const
 {
-	// To continue here
+	
+	if (checkLinearCombinations() || checkDiagonalsCombinations())
+		return true;
+
+	return false;
+}
+
+bool Board::checkDiagonalsCombinations() const
+{
+	// Diagonales descendantes (haut-gauche à bas-droite)
+	for (size_t y{ 0 }; y < boardSettings::rows; y++)
+	{
+		for (size_t x{ 0 }; x < boardSettings::columns; x++)
+		{
+			if ((y + 3 < boardSettings::rows) && (x + 3 < boardSettings::columns))
+			{
+				if (m_board[y][x] == m_board[y + 1][x + 1] && m_board[y + 1][x + 1] == m_board[y + 2][x + 2] && m_board[y + 2][x + 2] == m_board[y + 3][x + 3])
+					return true;
+			}
+		}
+	}
+
+	// Diagonales montantes (bas-gauche à haut-droite)
+	for (int y{ boardSettings::rows - 1 }; y >= 0; y--)
+	{
+		for (size_t x{ 0 }; x < boardSettings::columns; x++)
+		{
+			if ((y - 3 >= 0) && (x + 3 < boardSettings::columns))
+			{
+				if (m_board[static_cast<size_t>(y)][x] == m_board[static_cast<size_t>(y - 1)][x + 1] && m_board[static_cast<size_t>(y - 1)][x + 1] == m_board[static_cast<size_t>(y - 2)][x + 2] && m_board[static_cast<size_t>(y - 2)][x + 2] == m_board[static_cast<size_t>(y - 3)][x + 3])
+					return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Board::checkLinearCombinations() const
+{
+	for (size_t y{ 0 }; y < boardSettings::rows; y++)
+	{
+		for (size_t x{ 0 }; x < boardSettings::columns; x++)
+		{
+
+			// Check winning row combination
+			if (x + 3 < boardSettings::columns)
+			{
+				if (m_board[y][x] == m_board[y][x + 1] && m_board[y][x + 1] == m_board[y][x + 2] && m_board[y][x + 2] == m_board[y][x + 3])
+					return true;
+			}
+
+			// Check winning column combination
+			if (y + 3 < boardSettings::rows)
+			{
+				if (m_board[y][x] == m_board[y + 1][x] && m_board[y + 1][x] == m_board[y + 2][x] && m_board[y + 2][x] == m_board[y + 3][x])
+					return true;
+			}
+		}
+	}
+	return false;
 }
 
 

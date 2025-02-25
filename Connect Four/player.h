@@ -10,10 +10,21 @@ public:
 	virtual ~Player() = default;
 
 	virtual void playTurn(Board& board) const;
+	const std::string& getName() const;
 
 private:
 
 	size_t chooseColumn(const Board& board) const;
+
+protected:
+
+	Player(std::string_view name)
+		: m_name{ name }
+	{
+	}
+
+		std::string m_name{"Red"};
+
 };
 
 #endif

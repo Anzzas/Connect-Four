@@ -22,6 +22,8 @@ public:
 	bool isColumnFull(size_t column) const;
 	bool isBoardFull() const;
 	bool isGameWon() const;
+	bool checkDiagonalsCombinations() const;
+	bool checkLinearCombinations() const;
 
 private:
 

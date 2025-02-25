@@ -139,6 +139,7 @@
     <ClInclude Include="board.h" />
     <ClInclude Include="cpu.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="random.h" />
     <ClInclude Include="slot.h" />
     <ClInclude Include="token.h" />
   </ItemGroup>

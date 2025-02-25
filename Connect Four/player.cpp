@@ -26,6 +26,8 @@ size_t Player::chooseColumn(const Board& board) const
 			std::cout << "Column is full! Try again: ";
 			continue;
 		}
+
+		std::cout << "\n\n";
 		return choice;
 	}
 }
@@ -38,3 +40,5 @@ void Player::playTurn(Board& board) const
 
 	catch (const std::runtime_error&) { throw; }
 }
+
+const std::string& Player::getName() const { return m_name; }

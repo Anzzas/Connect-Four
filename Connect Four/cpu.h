@@ -6,7 +6,10 @@ class Cpu : public Player
 {
 public:
 
-	Cpu() = default;
+	Cpu()
+		: Player{ "Yellow" }
+	{
+	}
 
 	void playTurn(Board& board) const override;
 };

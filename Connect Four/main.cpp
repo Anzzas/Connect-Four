@@ -39,7 +39,8 @@ int main()
 		std::cout << "Welcome to Connect Four !\n"
 			<< "You have the red tokens. Your opponant has the yellow ones !\n\n";
 
-		while (bool continueGame{ true })
+		bool continueGame{ true };
+		while (continueGame)
 		{
 			std::cout << board << "\n\n\n";
 
@@ -47,22 +48,28 @@ int main()
 			{
 				try { e->playTurn(board); }
 
-				catch (const std::runtime_error& error)
+				catch (const std::runtime_error& error) // Fatal error handling
 				{
 					std::cerr << error.what();
 					return 0;
 				}
 
-				// Verify Draw condition
-				if (board.isBoardFull())
+				// Verifying Win or Draw conditions
+				if (board.isGameWon() || board.isBoardFull())
 				{
-					std::cout << "It is a draw !\n\n";
+					std::cout << board << "\n\n";
+
+					if (board.isGameWon())
+						std::cout << e->getName() << " has won !\n\n";
+
+					else
+						std::cout << "It is a draw !\n\n";
+
 					continueGame = false;
 					break;
 				}
 			}
 		}
-
 		if (!replayGame())
 			return 0;
 	}

@@ -1,13 +1,19 @@
 #include "cpu.h"
+#include "random.h"
 
 void Cpu::playTurn(Board& board) const
 {
-	if (board.isColumnFull(2))
+	size_t randomChoice{ static_cast<size_t>(Random::get(1, 7)) };
+	while (true)
 	{
-		//To continue here
+		if (board.isColumnFull(randomChoice))
+		{
+			randomChoice = static_cast<size_t>(Random::get(1, 7));
+			continue;
+		}
+		break;
 	}
-
-	try { board.dropCoin(Token::createYellow(), 2); }
+	try { board.dropCoin(Token::createYellow(), randomChoice); }
 
 	catch (const std::runtime_error&) { throw; }
 }
