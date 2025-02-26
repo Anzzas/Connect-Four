@@ -137,3 +137,14 @@ bool Board::checkLinearCombinations() const
 }
 
 
+void Board::undoMove(int col) 
+{
+	for (int row = 0; row < boardSettings::rows; row++) 
+	{
+		if (!m_board[row][col].isEmpty())  // Vérifie si la case contient un jeton
+		{ 
+			m_board[row][col].clear(); // Réinitialise la case (la met vide)
+			break;
+		}
+	}
+}

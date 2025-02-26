@@ -24,6 +24,7 @@ public:
 	bool isGameWon() const;
 	bool checkDiagonalsCombinations() const;
 	bool checkLinearCombinations() const;
+	void undoMove(int col);
 
 private:
 

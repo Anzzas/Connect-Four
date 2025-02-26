@@ -24,6 +24,7 @@ public:
 	friend std::ostream& operator<< (std::ostream& out, const Slot& slot);
 	bool operator== (const Slot& slot) const;
 	bool operator!= (const Slot& slot) const;
+	void clear();
 
 private:
 

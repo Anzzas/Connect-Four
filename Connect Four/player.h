@@ -9,7 +9,7 @@ public:
 	Player() = default;
 	virtual ~Player() = default;
 
-	virtual void playTurn(Board& board) const;
+	virtual void playTurn(Board& board);
 	const std::string& getName() const;
 
 private:

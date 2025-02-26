@@ -30,7 +30,7 @@ int main()
 	{
 		Board board{};
 
-		const std::array<const std::unique_ptr<const Player>, 2> players{
+		const std::array<const std::unique_ptr<Player>, 2> players{
 
 			std::make_unique<Player>(),
 			std::make_unique<Cpu>(),
@@ -44,7 +44,7 @@ int main()
 		{
 			std::cout << board << "\n\n\n";
 
-			for (const auto& e : players)
+			for (auto& e : players)
 			{
 				try { e->playTurn(board); }
 

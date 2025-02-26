@@ -32,7 +32,7 @@ size_t Player::chooseColumn(const Board& board) const
 	}
 }
 
-void Player::playTurn(Board& board) const
+void Player::playTurn(Board& board)
 {
 	size_t column{ chooseColumn(board) };
 

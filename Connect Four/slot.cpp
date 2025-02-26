@@ -55,3 +55,9 @@ bool Slot::isEmpty() const
 {
 	return m_state == empty && m_token == nullptr;
 }
+
+void Slot::clear()
+{
+	m_state = empty;
+	m_token = nullptr;
+}
